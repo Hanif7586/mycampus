@@ -126,7 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(width: 8),
                     Stack(
                       children: [
-                        _buildIconBtn(Icons.notifications_rounded, () {}),
+                        _buildIconBtn(Icons.notifications_rounded, () {
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const NoticeScreen()));
+                        }),
                         Positioned(
                           right: 4,
                           top: 4,
