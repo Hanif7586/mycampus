@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import '../../../core/providers/auth_provider.dart';
 import '../../../core/consts/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/global_widgets/custom_text.dart';
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.bgDark,
       body: CustomScrollView(
         slivers: [
-          _buildSliverAppBar(),
+          _buildSliverAppBar(context),
           SliverToBoxAdapter(
             child: Column(
               children: [
@@ -63,11 +65,29 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildSliverAppBar() {
+  Widget _buildSliverAppBar(BuildContext context) {
     final now = DateTime.now();
     final hour = now.hour;
-    String greeting = hour < 12 ? 'Good Morning' : hour < 17 ? 'Good Afternoon' : 'Good Evening';
-    String emoji = hour < 12 ? '☀️' : hour < 17 ? '🌤️' : '🌙';
+    
+    String greeting;
+    String emoji;
+    if (hour >= 5 && hour < 12) {
+      greeting = 'Good Morning';
+      emoji = '☀️';
+    } else if (hour >= 12 && hour < 17) {
+      greeting = 'Good Afternoon';
+      emoji = '🌤️';
+    } else if (hour >= 17 && hour < 21) {
+      greeting = 'Good Evening';
+      emoji = '🌅';
+    } else {
+      greeting = 'Good Night';
+      emoji = '🌙';
+    }
+
+    final user = context.watch<AuthProvider>().user;
+    final userName = user?.name ?? 'Welcome';
+    final userInitials = user?.initials ?? 'U';
 
     return SliverAppBar(
       backgroundColor: AppColors.bgDark,
@@ -91,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.textSecondary,
                       ),
                       CustomText(
-                        'Hanif Ahmed',
+                        userName,
                         type: TextType.headlineSmall,
                         fontWeight: FontWeight.w700,
                       ),
@@ -138,8 +158,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
                           ],
                         ),
-                        child: const Center(
-                          child: CustomText('HA', type: TextType.titleSmall,
+                        child: Center(
+                          child: CustomText(userInitials, type: TextType.titleSmall,
                               color: Colors.white),
                         ),
                       ),
