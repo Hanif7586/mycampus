@@ -305,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisCount: 4,
                 mainAxisSpacing: 12.h,
                 crossAxisSpacing: 12.w,
-                childAspectRatio: 0.75, // Adjust ratio to prevent overflow
+                childAspectRatio: 0.9, // Adjusted ratio to remove empty space
               ),
               itemCount: _quickItems.length,
               itemBuilder: (context, index) {
@@ -628,7 +628,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: LinearProgressIndicator(
                   value: 0.85,
                   backgroundColor: AppColors.bgSurface,
-                  valueColor: const AlwaysStoppedAnimation<Color>(AppColors.success),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.success),
                   minHeight: 8,
                 ),
               ),

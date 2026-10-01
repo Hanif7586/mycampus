@@ -17,7 +17,7 @@ class EventScreen extends StatelessWidget {
           children: [
             Icon(Icons.event_rounded, size: 80, color: AppColors.eventColor.withOpacity(0.5)),
             const SizedBox(height: 16),
-            const CustomText('No upcoming events', type: TextType.titleMedium, color: AppColors.textHint),
+            CustomText('No upcoming events', type: TextType.titleMedium, color: AppColors.textHint),
           ],
         ),
       ),

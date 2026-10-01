@@ -460,11 +460,11 @@ class _NoticeDetailSheet extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const Icon(Icons.person_outline_rounded, size: 14, color: AppColors.textHint),
+                      Icon(Icons.person_outline_rounded, size: 14, color: AppColors.textHint),
                       const SizedBox(width: 4),
                       CustomText(notice.postedBy, type: TextType.bodySmall, color: AppColors.textHint),
                       const SizedBox(width: 16),
-                      const Icon(Icons.access_time_rounded, size: 14, color: AppColors.textHint),
+                      Icon(Icons.access_time_rounded, size: 14, color: AppColors.textHint),
                       const SizedBox(width: 4),
                       CustomText(
                         DateFormat('MMM d, y').format(notice.createdAt),

@@ -17,7 +17,7 @@ class LibraryScreen extends StatelessWidget {
           children: [
             Icon(Icons.local_library_rounded, size: 80, color: AppColors.libraryColor.withOpacity(0.5)),
             const SizedBox(height: 16),
-            const CustomText('Digital Library Coming Soon', type: TextType.titleMedium, color: AppColors.textHint),
+            CustomText('Digital Library Coming Soon', type: TextType.titleMedium, color: AppColors.textHint),
           ],
         ),
       ),

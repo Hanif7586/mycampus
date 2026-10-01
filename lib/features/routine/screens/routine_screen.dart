@@ -162,7 +162,7 @@ class _RoutineScreenState extends State<RoutineScreen> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: CustomText('No Routine Found', type: TextType.titleMedium, color: AppColors.textHint));
+                  return Center(child: CustomText('No Routine Found', type: TextType.titleMedium, color: AppColors.textHint));
                 }
                 
                 final _routine = RoutineModel.fromFirestore(snapshot.data!.docs.first);

@@ -5,7 +5,10 @@ import '../../../core/consts/app_colors.dart';
 import '../../../core/global_widgets/custom_text.dart';
 import 'package:provider/provider.dart';
 import '../../../core/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
+import '../../../core/providers/auth_provider.dart';
 import '../../auth/screens/login_screen.dart';
+import '../../notice/screens/notice_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -156,8 +159,17 @@ class ProfileScreen extends StatelessWidget {
                     child: _buildSection(
                       'Settings',
                       [
-                        const _MenuItem(icon: Icons.notifications_rounded,
-                            label: 'Notifications', color: AppColors.primary),
+                        _MenuItem(
+                          icon: Icons.notifications_rounded,
+                          label: 'Notifications',
+                          color: AppColors.primary,
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const NoticeScreen()));
+                          },
+                        ),
                         const _MenuItem(icon: Icons.security_rounded,
                             label: 'Privacy & Security', color: AppColors.info),
                       ],
@@ -358,7 +370,7 @@ class ProfileScreen extends StatelessWidget {
                       type: TextType.titleSmall, fontSize: 14),
                   trailing: const Icon(Icons.chevron_right_rounded,
                       color: AppColors.textHint, size: 20),
-                  onTap: () {},
+                  onTap: item.onTap,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 ),
               ],
@@ -375,5 +387,12 @@ class _MenuItem {
   final IconData icon;
   final String label;
   final Color color;
-  const _MenuItem({required this.icon, required this.label, required this.color});
+  final VoidCallback? onTap;
+  
+  const _MenuItem({
+    required this.icon, 
+    required this.label, 
+    required this.color,
+    this.onTap,
+  });
 }

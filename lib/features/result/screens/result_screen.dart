@@ -652,9 +652,9 @@ class _ResultScreenState extends State<ResultScreen>
     }
     final total = _result.courses.length.toDouble();
     return [
-      PieChartSectionData(value: counts['A+/A']! / total * 100, color: AppColors.success, title: '${counts['A+/A']}', radius: 50, titleStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
-      PieChartSectionData(value: counts['A-/B+']! / total * 100, color: AppColors.info, title: '${counts['A-/B+']}', radius: 50, titleStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
-      PieChartSectionData(value: counts['B']! / total * 100, color: AppColors.warning, title: '${counts['B']}', radius: 50, titleStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
+      PieChartSectionData(value: counts['A+/A']! / total * 100, color: AppColors.success, title: '${counts['A+/A']}', radius: 50, titleStyle: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
+      PieChartSectionData(value: counts['A-/B+']! / total * 100, color: AppColors.info, title: '${counts['A-/B+']}', radius: 50, titleStyle: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
+      PieChartSectionData(value: counts['B']! / total * 100, color: AppColors.warning, title: '${counts['B']}', radius: 50, titleStyle: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700, fontFamily: 'Poppins')),
     ];
   }
 
