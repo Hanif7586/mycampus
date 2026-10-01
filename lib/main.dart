@@ -7,9 +7,17 @@ import 'core/providers/auth_provider.dart';
 import 'core/providers/notice_provider.dart';
 import 'features/splash/screens/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (_) {}
 
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([

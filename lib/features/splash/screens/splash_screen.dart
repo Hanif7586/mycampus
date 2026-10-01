@@ -5,6 +5,9 @@ import 'package:animate_do/animate_do.dart';
 import '../../../core/consts/app_colors.dart';
 import '../../../core/global_widgets/custom_text.dart';
 import '../../auth/screens/login_screen.dart';
+import '../../home/screens/main_shell.dart';
+import 'package:provider/provider.dart';
+import '../../../core/providers/auth_provider.dart';
 import '../../../firebase_options.dart';
 import '../../../core/services/firestore_seeder.dart';
 
@@ -31,18 +34,18 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _initApp() async {
     try {
-      await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform,
-      );
       await FirestoreSeeder.seedInitialData();
-    } catch (_) {
-      // Firebase already initialized or not configured — continue
-    }
+    } catch (_) {}
+    
     await Future.delayed(const Duration(milliseconds: 2800));
+    
     if (mounted) {
+      final auth = context.read<AuthProvider>();
+      final Widget nextScreen = auth.isAuthenticated ? const MainShell() : const LoginScreen();
+      
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          pageBuilder: (_, anim, __) => const LoginScreen(),
+          pageBuilder: (_, anim, __) => nextScreen,
           transitionsBuilder: (_, anim, __, child) => FadeTransition(
             opacity: anim,
             child: child,
